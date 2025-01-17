@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
+import scala.util.Random;
 
 @RestController
 public class PaytmController {
@@ -26,7 +27,7 @@ public class PaytmController {
     @GetMapping("/publish/{message}")
     public void sendMessage(@PathVariable String message){
         for (int i =1;i<=100;i++) {
-            kafkaTemplate.send("madhavJava", message+i);
+            kafkaTemplate.send("PAYMENT_TOPIC", message+i);
         }
     }
 
@@ -50,12 +51,17 @@ public class PaytmController {
 //
 //        return ResponseEntity.ok("Payment received successfully...!");
 //    }
-
+    @PostMapping("/paytm/payment")
     public String doPayment(@RequestBody PaytmRequest<PaymentRequest> paytmRequest) throws JsonProcessingException {
-        PaymentRequest paymentRequest = paytmRequest.getPayLoad();
-        paymentRequest.setTransactionId(UUID.randomUUID().toString());
-        paymentRequest.setTxDate(new Date());
-         kafkaTemplate.send(topicName,new ObjectMapper().writeValueAsString(paymentRequest));
+        for (int i = 0; i <= 500; i++) {
+            PaymentRequest paymentRequest = paytmRequest.getPayLoad();
+            paymentRequest.setSrcAcc("SRC_AC: "+ i);
+            paymentRequest.setDestAcc("DEST_ACC: "+ i);
+            paymentRequest.setAmount(new Random().nextInt(10000));
+            paymentRequest.setTransactionId(UUID.randomUUID().toString());
+            paymentRequest.setTxDate(new Date());
+            kafkaTemplate.send(topicName, new ObjectMapper().writeValueAsString(paymentRequest));
+        }
          return "message sent to kafka ";
     }
 }
