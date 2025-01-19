@@ -45,7 +45,7 @@ public class ProductServiceImpl implements ProductService {
 
     public List<Product> getProductByPrice(double price){
         logger.debug("ProductServiceImpl :: getProductByPrice -{}",price);
-        return productRepository.getProductByPrice(price);
+        return productRepository.getProductByPrice(price);// here we write custom query then call method
     }
 
     public List<Product> getItemProductTypeAndPrice(String productType,double price){
@@ -104,12 +104,15 @@ public class ProductServiceImpl implements ProductService {
     }
         //SORTING
     public List<Product> getSortingBasedOnName(String fieldName){
-        return productRepository.findAll(Sort.by(Sort.Direction.ASC,fieldName));
+        return productRepository.findAll(Sort
+                .by(Sort.Direction
+                        .ASC,fieldName));
     }
 
     // PAGINATION
     public Page<Product> getProductsWithPagingRange(int offSet, int limit){
-        return productRepository.findAll(PageRequest.of(offSet,limit));
+        return productRepository.findAll(PageRequest
+                .of(offSet,limit));
     }
 
     // PAGINATION AND SORTING >> ONE

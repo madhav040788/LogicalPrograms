@@ -30,7 +30,7 @@ public class TaskService {
     private static final Logger logger = LoggerFactory.getLogger(TaskService.class);
 
     public Task saveTask(Task task){
-        //Random id like afdff43f-rwe34dfd-32ddfda3 ==> set[0---saveInDb]
+        //Random id like afdff43f-rwe34dfd-32ddfda3 ==> set[0--firstString-saveInDb]
         task.setTaskId(UUID.randomUUID().toString().split("-")[0]);
         logger.info("TaskService :: saveTask in db");
         Task saveInDb = taskRepository.save(task);

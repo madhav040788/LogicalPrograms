@@ -13,15 +13,15 @@ public class PaytmRequest<T> {
     public T getPayLoad() {
         return payLoad;
     }
-
-    public void setPayLoad(T payLoad) {
-        this.payLoad = payLoad;
-    }
-
-    public PaytmRequest(T payLoad) {
-        this.payLoad = payLoad;
-    }
-
-    public PaytmRequest() {
-    }
+//
+//    public void setPayLoad(T payLoad) {
+//        this.payLoad = payLoad;
+//    }
+//
+//    public PaytmRequest(T payLoad) {
+//        this.payLoad = payLoad;
+//    }
+//
+//    public PaytmRequest() {
+//    }
 }

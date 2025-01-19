@@ -58,7 +58,7 @@ public class PaytmController {
             paymentRequest.setSrcAcc("SRC_AC: "+ i);
             paymentRequest.setDestAcc("DEST_ACC: "+ i);
             paymentRequest.setAmount(new Random().nextInt(10000));
-            paymentRequest.setTransactionId(UUID.randomUUID().toString());
+            paymentRequest.setTransactionId(paymentRequest.getTransactionId());
             paymentRequest.setTxDate(new Date());
             kafkaTemplate.send(topicName, new ObjectMapper().writeValueAsString(paymentRequest));
         }

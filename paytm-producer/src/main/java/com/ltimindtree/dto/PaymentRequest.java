@@ -1,8 +1,11 @@
 package com.ltimindtree.dto;
 
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 import java.util.Date;
 
@@ -11,6 +14,8 @@ import java.util.Date;
 @NoArgsConstructor
 public class PaymentRequest {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String transactionId;
     private String srcAcc;
     private String destAcc;
@@ -65,4 +70,14 @@ public class PaymentRequest {
         this.txDate = txDate;
     }
 
+    @Override
+    public String toString() {
+        return "PaymentRequest{" +
+                "transactionId='" + transactionId + '\'' +
+                ", srcAcc='" + srcAcc + '\'' +
+                ", destAcc='" + destAcc + '\'' +
+                ", amount=" + amount +
+                ", txDate=" + txDate +
+                '}';
+    }
 }
