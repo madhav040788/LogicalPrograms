@@ -2,7 +2,7 @@ package numbersLogicalPrograms;
 
 public class PrimeNumber {
     public static void main(String[] args) {
-        int number = 98;
+        int number = 93;
         boolean isPrime = true;
 
         for (int i = 2; i <= Math.sqrt(number); i++){
@@ -16,6 +16,6 @@ public class PrimeNumber {
         }else {
             System.out.println("this is Not prime number :"+number);
         }
-
     }
+//    Number is prime : 93
 }

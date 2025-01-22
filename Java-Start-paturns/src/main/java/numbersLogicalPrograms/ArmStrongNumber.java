@@ -15,4 +15,8 @@ public class ArmStrongNumber {
             System.out.println(number+"  : No--- this is not ArmStringNumber ");
         }
     }
+//    153 : Yes... this is ArmStrong Number
+//
+//    Process finished with exit code 0
+
 }

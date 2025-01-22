@@ -12,4 +12,11 @@ public class Factorial {
 
         System.out.println("Factorial of " + number + " is " + factorial);
     }
+//            1 = 1
+//            2 = 2
+//            6 = 3
+//            24 = 4
+//            120 = 5
+//    Factorial of 5 is 120
+
 }
